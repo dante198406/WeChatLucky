@@ -7,18 +7,17 @@
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="6dp"
-            android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingTop="10dp">
 
         <TextView android:id="@+android:id/title"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:singleLine="true"
                   android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:singleLine="true"
                   android:textColor="#d55849"
-                  android:textSize="16sp"
-                  android:fadingEdge="horizontal"/>
+            android:textSize="16sp" />
     </RelativeLayout>
 </LinearLayout>

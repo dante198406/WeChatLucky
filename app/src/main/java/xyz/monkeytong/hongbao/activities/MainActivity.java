@@ -15,13 +15,13 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import java.util.List;
 
 import xyz.monkeytong.hongbao.R;
 import xyz.monkeytong.hongbao.utils.ConnectivityUtil;
 import xyz.monkeytong.hongbao.utils.UpdateTask;
-
-import com.tencent.bugly.crashreport.CrashReport;
 
 
 public class MainActivity extends Activity implements AccessibilityManager.AccessibilityStateChangeListener {
@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements AccessibilityManager.Acces
     }
 
     private void explicitlyLoadPreferences() {
-        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+        PreferenceManager.setDefaultValues(this, R.xml.general_preferences, false);
     }
 
     /**
@@ -107,6 +107,8 @@ public class MainActivity extends Activity implements AccessibilityManager.Acces
 
     public void openSettings(View view) {
         Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        settingsIntent.putExtra("title", "偏好设置");
+        settingsIntent.putExtra("frag_id", "GeneralSettingsFragment");
         startActivity(settingsIntent);
     }
 

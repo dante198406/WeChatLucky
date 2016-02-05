@@ -6,10 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -18,10 +14,9 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.EditText;
 import android.widget.TextView;
+
 import xyz.monkeytong.hongbao.R;
-import xyz.monkeytong.hongbao.utils.UpdateTask;
 
 /**
  * Created by Zhongyi on 1/19/16.
@@ -29,6 +24,7 @@ import xyz.monkeytong.hongbao.utils.UpdateTask;
  */
 public class WebViewActivity extends Activity {
     private WebView webView;
+    private String webViewUrl, webViewTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +34,8 @@ public class WebViewActivity extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && !bundle.isEmpty()) {
-            String webViewTitle = bundle.getString("title");
-            String webViewUrl = bundle.getString("url");
+            webViewTitle = bundle.getString("title");
+            webViewUrl = bundle.getString("url");
 
             TextView webViewBar = (TextView) findViewById(R.id.webview_bar);
             webViewBar.setText(webViewTitle);
@@ -104,5 +100,11 @@ public class WebViewActivity extends Activity {
 
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public void openLink(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse(this.webViewUrl));
+        startActivity(intent);
     }
 }
