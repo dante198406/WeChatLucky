@@ -36,7 +36,8 @@ public class HongbaoSignature {
 
             /* The sender and possible timestamp. Should mean something too. */
             String[] hongbaoInfo = getSenderContentDescriptionFromNode(messageNode);
-            if (this.getSignature(hongbaoInfo[0], hongbaoContent, hongbaoInfo[1]).equals(this.toString())) return false;
+            if (this.getSignature(hongbaoInfo[0], hongbaoContent, hongbaoInfo[1]).equals(this.toString()))
+                return false;
 
             /* So far we make sure it's a valid new coming hongbao. */
             this.sender = hongbaoInfo[0];
